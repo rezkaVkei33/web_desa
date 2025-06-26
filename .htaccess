@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /web_desa/
+
+    # Arahkan semua request ke index.php kecuali file dan folder yang ada
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [L]
+
+    # Lindungi folder sensitif
+    RewriteRule ^(application|system|user_guide) - [F,L]
+
+    # Lindungi file konfigurasi umum
+    <FilesMatch "\.(env|ini|log|sql|bak|json|xml|yml|yaml|md|pem|crt|key|p12|pfx|git|gitignore|htaccess|htpasswd)$">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+</IfModule>

@@ -1,0 +1,147 @@
+{
+	// snippet ci3 controller dasar
+	"CI3 Controller": {
+  "prefix": "cicontroller",
+  "body": [
+    "<?php",
+    "defined('BASEPATH') OR exit('No direct script access allowed');",
+    "",
+    "class ${1:Welcome} extends CI_Controller {",
+    "",
+    "    public function __construct() {",
+    "        parent::__construct();",
+    "        // $this->load->model('');",
+    "    }",
+    "",
+    "    public function index() {",
+    "        $this->load->view('${2:view_name}');",
+    "    }",
+    "}"
+  ],
+  "description": "CodeIgniter 3 Controller Basic"
+},
+// snippet ci3 model dasar
+"CI3 Model": {
+  "prefix": "cimodel",
+  "body": [
+    "<?php",
+    "defined('BASEPATH') OR exit('No direct script access allowed');",
+    "",
+    "class ${1:Model_name} extends CI_Model {",
+    "",
+    "    public function __construct() {",
+    "        parent::__construct();",
+    "        // $this->load->database();",
+    "    }",
+    "",
+    "    public function get_all() {",
+    "        return $this->db->get('${2:table_name}')->result();",
+    "    }",
+    "",
+    "    public function get_by_id($id) {",
+    "        return $this->db->get_where('${2:table_name}', ['id' => $id])->row();",
+    "    }",
+    "",
+    "    public function insert($data) {",
+    "        return $this->db->insert('${2:table_name}', $data);",
+    "    }",
+    "",
+    "    public function update($id, $data) {",
+    "        $this->db->where('id', $id);",
+    "        return $this->db->update('${2:table_name}', $data);",
+    "    }",
+    "",
+    "    public function delete($id) {",
+    "        $this->db->where('id', $id);",
+    "        return $this->db->delete('${2:table_name}');",
+    "    }",
+    "}"
+  ],
+  "description": "CodeIgniter 3 Model Basic with CRUD"
+},
+
+// snippet dengan view data
+"CI3 View Data": {
+  "prefix": "civiewdata",
+  "body": [
+	"<?php",
+	"defined('BASEPATH') OR exit('No direct script access allowed');",
+	"",
+	"<!DOCTYPE html>",
+	"<html lang=\"en\">",
+	"<head>",
+	"    <meta charset=\"UTF-8\">",
+	"    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+	"    <title>${1:Page Title}</title>",
+	"</head>",
+	"<body>",
+	"<h1>${2:Welcome to CodeIgniter 3}</h1>",
+	"<p>This is a basic view with data.</p>",
+	"<?php if (isset($data) && !empty($data)): ?>",
+	"<ul>",
+	"<?php foreach ($data as $item): ?>",
+	"<li><?php echo $item->name; ?></li>",
+	"<?php endforeach; ?>",
+	"</ul>",
+	"<?php else: ?>",
+	"<p>No data available.</p>",
+	"<?php endif; ?>",
+	"</body>",
+	"</html>"
+  ],
+},
+
+// CI form open
+"CI3 Form Open": {
+  "prefix": "ciformopen",
+  "body": [
+    "<?php echo form_open('${1:controller/method}'); ?>"
+  ],
+  "description": "CI3 Form Open"
+},
+// CI Echo Form Input
+"CI3 Form Input": {
+  "prefix": "ciforminput",
+  "body": [
+    "<?php echo form_input('${1:name}', set_value('${1:name}'), 'class=\"form-control\"'); ?>"
+  ],
+  "description": "CI3 Input Field"
+},
+
+// PHP Form Open
+"PHP": {
+  "prefix": "php",
+  "body": [
+    "<?php $1; ?>"
+  ],
+  "description": "CI3 Form Open"
+},
+// PHP Echo
+"PHP Echo": {
+  "prefix": "phpp",
+  "body": [
+    "<?= $1; ?>"
+  ],
+  "description": "PHP Echo"
+}
+// PHP If
+,"PHP If": {
+  "prefix": "pif",
+  "body": [
+    "<?php if ($1): ?>",
+    "$2",
+    "<?php endif; ?>"
+  ],
+  "description": "PHP If Statement"
+},
+// PHP Foreach
+"PHP Foreach": {
+  "prefix": "pforeach",
+  "body": [
+    "<?php foreach ($1 as $2): ?>",
+    "$3",
+    "<?php endforeach; ?>"
+  ],
+  "description": "PHP Foreach Loop"
+}
+}
