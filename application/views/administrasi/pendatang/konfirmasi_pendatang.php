@@ -49,7 +49,8 @@ function generate_nik() {
                         <!-- NOMOR SURAT -->
                         <div class="mb-3">
                             <label for="nomor_surat" class="form-label">Nomor Surat</label>
-                            <input type="text" name="nomor_surat" class="form-control" id="nomor_surat" placeholder="cth: 010/SP/Domisili/Ibul/VI/2025" required>
+                            <input type="text" name="nomor_surat" id="nomor_surat" class="form-control" 
+                                value="<?= isset($nomor_surat) ? $nomor_surat : ''; ?>" readonly>
                         </div>
 
                         <!-- TANGGAL TERBIT -->
@@ -61,7 +62,7 @@ function generate_nik() {
                         <!-- KETERANGAN -->
                         <div class="mb-3">
                             <label for="keterangan" class="form-label">Keterangan</label>
-                            <textarea name="alamat" id="alamat" class="form-control"></textarea>
+                            <textarea name="keterangan" id="keterangan" class="form-control"></textarea>
                         </div>
                         
 

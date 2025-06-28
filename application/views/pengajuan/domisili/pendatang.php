@@ -55,7 +55,7 @@
       <!-- No WhatsApp -->
       <div class="col-md-6">
         <label class="form-label">Nomor WhatsApp</label>
-        <input type="tel" class="form-control" name="no_wa" placeholder="+62xxxxxx" required>
+        <input type="tel" class="form-control" name="no_wa" placeholder="62xxxxxx" required>
       </div>
 
       <!-- Email -->
@@ -69,21 +69,21 @@
         <label class="form-label">Jenis Kelamin</label>
         <select class="form-select" name="jenis_kelamin" required>
           <option value="" disabled selected hidden>Pilih Jenis Kelamin</option>
-          <option value="L">Laki-laki</option>
-          <option value="P">Perempuan</option>
+          <option value="Laki-laki">Laki-laki</option>
+          <option value="Perempuan">Perempuan</option>
         </select>
       </div>
 
       <!-- Alamat Asal -->
       <div class="col-md-12">
-        <label class="form-label">Alamat Asal</label>
-        <textarea class="form-control" name="alamat_asal" rows="2" placeholder="Alamat lengkap sebelum pindah..." required></textarea>
+        <label class="form-label">Desa Asal</label>
+        <textarea class="form-control" name="alamat_asal" rows="2" placeholder="Desa sebelum pindah, Cth: Lenggang..." required></textarea>
       </div>
 
       <!-- Alamat Domisili -->
       <div class="col-md-12">
         <label class="form-label">Alamat Domisili Sekarang</label>
-        <textarea class="form-control" name="alamat_domisili" rows="2" placeholder="Alamat tempat tinggal saat ini..." required></textarea>
+        <textarea class="form-control" name="alamat_domisili" rows="2" placeholder="Alamat tinggal saat ini..." required></textarea>
       </div>
 
       <!-- Alasan Pindah -->

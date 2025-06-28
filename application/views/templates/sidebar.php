@@ -63,7 +63,7 @@
                         <a class="collapse-item" href="#">Data Kematian</a>
                         <a class="collapse-item" href="#">Data Bansos</a>
                         <a class="collapse-item" href="#">Data Pindahan</a>
-                        <a class="collapse-item" href="#">Layanan & surat</a>
+                        <a class="collapse-item" href="<?= base_url('Domisili/surat_domisili'); ?>">Layanan & surat</a>
                     </div>
                 </div>
             </li>

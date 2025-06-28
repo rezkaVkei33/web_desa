@@ -12,6 +12,10 @@ class Domisili extends CI_Controller {
     public function index() {
         $this->load->view('pengajuan/domisili/home_domisili');
     }
+    public function surat_domisili() {
+        $data['surat_domisili'] = $this->Domisili_model->get_surat_domisili();
+        $this->load->view('administrasi/surat_domisili/surat_domisili', $data);
+    }
     public function pendatang() {
         $this->load->view('pengajuan/domisili/pendatang');
     }
