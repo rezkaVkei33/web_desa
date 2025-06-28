@@ -8,6 +8,6 @@ $route['pendatang'] = 'pendatang';
 $route['domisili'] = 'pengaduan/home_domisili';
 $route['domisili'] = 'domisili/index';
 $route['domisili/pendatang'] = 'domisili/pendatang';
-$route['domisili/simpan_pendatang'] = 'domisili/simpan_pendatang';
+$route['domisili/konfirmasi_pendatang'] = 'domisili/konfirmasi_pendatang';
 $route['domisili/pindahan'] = 'domisili/pindahan';
 $route['domisili/(:any)'] = 'domisili/$1';

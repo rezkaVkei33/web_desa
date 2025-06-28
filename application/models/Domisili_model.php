@@ -21,7 +21,11 @@ class Domisili_model extends CI_Model {
     }
     public function get_status_pendatang($id, $status){
         $this->db->where('id_pendatang', $id);
-        return $this->db->update('pendatang', ['status' => $status]);
+        return $this->db->update('pendatang', ['status_pengajuan' => $status]);
+    }
+    public function insert($data){
+        return $this->db->insert('surat_domisili',$data);
+
     }
 
 

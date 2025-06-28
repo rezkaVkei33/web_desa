@@ -96,7 +96,7 @@
                                 <tr>
                                     <td><?= $no++; ?></td>
                                     <td><?= $data->nama_lengkap; ?></td>
-                                    <td><?= $data->jenis_kelamin; ?></td>
+                                    <td class="text-center"><?= $data->jenis_kelamin; ?></td>
                                     <td><?= $data->alamat_asal; ?></td>
                                     <td><?= $data->alamat_domisili; ?></td>
                                     <td><?= $data->status_pengajuan; ?></td>
@@ -104,13 +104,16 @@
                                     <td class="text-center">
                                         <a href="" class="btn btn-warning btn-sm">
                                             <i class="fas fa-edit"></i> Ubah
-                                        </a>
+                                        </a><br>
                                         <a href="" class="btn btn-info btn-sm">
                                             <i class="fas fa-eye"></i> Detail
+                                        </a><br>
+                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#">
+                                            <i class="fas fa-trash"></i> Hapus
+                                        </button><br>
+                                        <a href="<?= base_url('pendatang/konfirmasi_pendatang/'. $data->id_pendatang); ?>" class="btn btn-primary btn-sm"> 
+                                            <i class="fas fa-edit"></i> Konfirmasi
                                         </a>
-                                       <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#">
-                                        <i class="fas fa-trash"></i> Hapus
-                                    </button>
 
                                     <!-- Modal Hapus Penduduk -->
                                     <div class="modal fade" id="" tabindex="-1" aria-labelledby="modalLabel-" aria-hidden="true">
