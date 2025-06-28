@@ -4,6 +4,7 @@ $route['default_controller'] = 'desa';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['penduduk'] = 'penduduk';
+$route['pendatang'] = 'pendatang';
 $route['domisili'] = 'pengaduan/home_domisili';
 $route['domisili'] = 'domisili/index';
 $route['domisili/pendatang'] = 'domisili/pendatang';

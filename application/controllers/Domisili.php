@@ -45,8 +45,26 @@ class Domisili extends CI_Controller {
         $this->email->from('noreply@desa-ibul-app', 'Domisili Desa Ibul');
         $this->email->to($email);
         $this->email->subject('Surat Domisili Telah di Konfirmasi');
-        $this->email->message('Halo ' . $nama . ',<br>Pengajuan surat domisili Anda telah berhasil dikirim. 
-        Silahkan tunggu proses verifikasi dari pihak desa.
+        $this->email->message(
+            'Halo ' . $nama . ',<br>
+            Pengajuan surat domisili Anda telah berhasil dikirim, dengan data sebagai berikut:<br>
+            <strong>Nama Lengkap:</strong> ' . $nama . '<br>
+            <strong>Tempat Lahir:</strong> ' . $this->input->post('tempat_lahir') . '<br>
+            <strong>Tanggal Lahir:</strong> ' . $this->input->post('tanggal_lahir') . '<br>
+            <strong>Jenis Kelamin:</strong> ' . $this->input->post('jenis_kelamin') . '<br>
+            <strong>Alamat Asal:</strong> ' . $this->input->post('alamat_asal') . '<br>
+            <strong>Alamat Domisili:</strong> ' . $this->input->post('alamat_domisili') . '<br>
+            <strong>Alasan Pindah:</strong> ' . $this->input->post('alasan_pindah') . '<br>
+            <strong>No WhatsApp:</strong> ' . $this->input->post('no_wa') . '<br>
+            <strong>Email:</strong> ' . $email . '<br><br>
+            Pengajuan Anda telah diterima dan akan segera diproses oleh pihak desa. 
+        <br>Anda akan menerima notifikasi lebih lanjut melalui email atau WhatsApp Anda.
+        <br>Jika ada pertanyaan, silakan hubungi kami di nomor WhatsApp resmi desa.
+        <br>Terima kasih atas pengajuan Anda.<br><br>
+        <strong>Catatan:</strong>
+        <br>Pastikan Anda memeriksa email dan WhatsApp Anda secara berkala untuk
+        <br>mendapatkan informasi terbaru mengenai status pengajuan Anda. 
+        <br>Silahkan tunggu proses verifikasi dari pihak desa.
         <br>Terima kasih.');
 
         if (!$this->email->send()) {
@@ -61,7 +79,18 @@ class Domisili extends CI_Controller {
     $token = "WvfQhHQcZD7S6Pgb1Tfa";
     $url = "https://api.fonnte.com/send";
 
-    $message = "Halo *$nama*,\nPengajuan surat domisili kamu telah diterima. Harap tunggu verifikasi dari admin desa ya 🙏";
+    $message = "Halo *$nama*,\nPengajuan surat domisili kamu telah diterima.
+                dengan data pengajuan sebagai berikut:\n
+                Nama Lengkap: $nama \n
+                Tempat Lahir:" . $this->input->post('tempat_lahir') . "\n
+                Tanggal Lahir: " . $this->input->post('tanggal_lahir') . "\n
+                Jenis Kelamin: " . $this->input->post('jenis_kelamin') . "\n
+                Alamat Asal: " . $this->input->post('alamat_asal') . "\n
+                Alamat Domisili: " . $this->input->post('alamat_domisili') . "\n
+                Alasan Pindah: " . $this->input->post('alasan_pindah') . "\n
+                No WhatsApp: $no_wa \n
+                Email: " . $this->input->post('email') . "\n\n
+                Harap tunggu verifikasi dari admin desa. ya Terima Kasih 🙏";
 
     $data = array(
         'target' => $no_wa,
