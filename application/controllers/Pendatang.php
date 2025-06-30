@@ -22,6 +22,36 @@ class Pendatang extends CI_Controller {
         $data['nomor_surat'] = $this->Domisili_model->generate_nomor_surat();
         $this->load->view('administrasi/pendatang/konfirmasi_pendatang', $data);
     }
+    public function ubah_pendatang($id){
+        $data['pendatang'] = $this->Pendatang_model->get_by_id($id);
+        if (!$data['pendatang']) {
+            show_404();
+        }
+        $this->load->view('administrasi/pendatang/ubah_pendatang', $data);
+    }
+    public function update_pendatang($id){
+        $data =array(
+            'nama_lengkap' => $this->input->post('nama_lengkap'),
+            'tempat_lahir' => $this->input->post('tempat_lahir'),
+            'tanggal_lahir' => $this->input->post('tanggal_lahir'),
+            'no_wa' => $this->input->post('no_wa'),
+            'email' => $this->input->post('email'),
+            'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+            'alamat_asal' => $this->input->post('alamat_asal'),
+            'alamat_domisili' => $this->input->post('alamat_domisili'),
+            'alasan_pindah' => $this->input->post('alasan_pindah')
+        );
+        $this->Pendatang_model->update($id, $data);
+        $this->session->set_flashdata('success','Data domisili pendatang berhasil diubah.');
+        redirect('pendatang');
+    }
+    
+    public function hapus_pendatang($id) {
+        $this->Pendatang_model->delete($id);
+        $this->session->set_flashdata('success', 'Data pendatang berhasil dihapus.');
+        redirect('pendatang');
+    }
+
     public function simpan_surat_domisili(){
         $id_pendatang = $this->input->post('id_pendatang');
         $nomor_surat = $this->Domisili_model->generate_nomor_surat();
@@ -166,6 +196,7 @@ class Pendatang extends CI_Controller {
         curl_exec($curl);
         curl_close($curl);
     }
+    
 
 
 }

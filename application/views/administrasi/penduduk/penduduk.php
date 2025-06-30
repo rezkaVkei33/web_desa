@@ -104,6 +104,9 @@
                                         <a href="<?= base_url('penduduk/ubah_penduduk/'. $data->penduduk_id); ?>" class="btn btn-warning btn-sm">
                                             <i class="fas fa-edit"></i> Ubah
                                         </a>
+                                        <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detail_penduduk-<?= $data->penduduk_id; ?>">
+                                            <i class="fas fa-eye"></i> Detail
+                                        </button>
                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapus_penduduk-<?= $data->penduduk_id; ?>">
                                         <i class="fas fa-trash"></i> Hapus
                                     </button>
@@ -126,6 +129,41 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <!-- end modal -->
+                                      <!-- Modal Detail Penduduk -->
+                                    <div class="modal fade" id="detail_penduduk-<?= $data->penduduk_id; ?>" tabindex="-1" aria-labelledby="modalLabel-" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                        <div class="modal-header bg-info">
+                                            <h5 class="modal-title " id="detailLabel">DETAIL PENDUDUK</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                                        </div>
+                                        
+                                       <div class="modal-body text-left">
+                                       <div class="p-3" style="display: grid; grid-template-columns: 200px 10px 1fr; row-gap: 10px; font-size: 16px;">
+                                            <div><strong>NIK</strong></div><div>:</div><div><?= $data->nik; ?></div>
+                                            <div><strong>No. Kartu Keluarga</strong></div><div>:</div><div><?= $data->no_kk; ?></div>
+                                            <div><strong>Nama Lengkap</strong></div><div>:</div><div><?= $data->nama_lengkap; ?></div>
+                                            <div><strong>Tempat Lahir</strong></div><div>:</div><div><?= $data->tempat_lahir; ?></div>
+                                            <div><strong>Tanggal Lahir</strong></div><div>:</div><div><?= date('d F Y', strtotime($data->tanggal_lahir)); ?></div>
+                                            <div><strong>Jenis Kelamin</strong></div><div>:</div><div><?= $data->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan'; ?></div>
+                                            <div><strong>Alamat</strong></div><div>:</div><div><?= $data->alamat; ?></div>
+                                            <div><strong>Agama</strong></div><div>:</div><div><?= $data->agama; ?></div>
+                                            <div><strong>Status Perkawinan</strong></div><div>:</div><div><?= $data->status_perkawinan; ?></div>
+                                            <div><strong>Pendidikan</strong></div><div>:</div><div><?= $data->pendidikan; ?></div>
+                                            <div><strong>Pekerjaan</strong></div><div>:</div><div><?= $data->pekerjaan; ?></div>
+                                            <div><strong>Kewarganegaraan</strong></div><div>:</div><div><?= $data->kewarganegaraan; ?></div>
+                                            <div><strong>Tanggal Update</strong></div><div>:</div><div><?= date('d F Y', strtotime($data->tanggal_update)); ?></div>
+                                            </div>
+                                        </div>
+
+                                        
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                        </div>
+                                    </div>
                                     </div>
                                     <!-- end modal -->
                                     </td>

@@ -99,16 +99,18 @@
                                     <td class="text-center"><?= $data->jenis_kelamin; ?></td>
                                     <td><?= $data->alamat_asal; ?></td>
                                     <td><?= $data->alamat_domisili; ?></td>
-                                    <td><?= $data->status_pengajuan; ?></td>
+                                    <td>
+                                         <span class="badge bg-info text-dark"><?= $data->status_pengajuan; ?></span>
+                                    </td>
                                     <td><?= date('d-m-Y H:i:s', strtotime($data->update_tanggal)); ?></td>
                                     <td class="text-center">
-                                        <a href="" class="btn btn-warning btn-sm">
-                                            <i class="fas fa-edit"></i> Ubah
+                                        <a href="<?= base_url('pendatang/ubah_pendatang/' . $data->id_pendatang); ?>" class="btn btn-warning btn-sm">
+                                            <i class="fas fa-edit"></i> Ubah 
                                         </a><br>
-                                        <a href="" class="btn btn-info btn-sm">
+                                        <a href="" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detail_pendatang-<?= $data->id_pendatang; ?>">
                                             <i class="fas fa-eye"></i> Detail
                                         </a><br>
-                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#">
+                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapus_pendatang-<?= $data->id_pendatang; ?>" onclick="showDeleteModal('Pendatang: <?= $data->nama_lengkap; ?> (ID: <?= $data->id_pendatang; ?>)', '<?= base_url('pendatang/hapus_pendatang/' . $data->id_pendatang); ?>')">
                                             <i class="fas fa-trash"></i> Hapus
                                         </button><br>
                                         <a href="<?= base_url('pendatang/konfirmasi_pendatang/'. $data->id_pendatang); ?>" class="btn btn-primary btn-sm"> 
@@ -116,23 +118,58 @@
                                         </a>
 
                                     <!-- Modal Hapus Penduduk -->
-                                    <div class="modal fade" id="" tabindex="-1" aria-labelledby="modalLabel-" aria-hidden="true">
+                                    <div class="modal fade" id="hapus_pendatang-<?= $data->id_pendatang; ?>" tabindex="-1" aria-labelledby="modalLabel-" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-danger text-white">
-                                                    <h5 class="modal-title text-white" id="modalLabel-">HAPUS DATA PENDUDUK</h5>
+                                                    <h5 class="modal-title text-white" id="modalLabel-">HAPUS DATA DOMISLI</h5>
                                                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
                                                 </div>
                                                 <div class="modal-body text-center">
                                                     <p>Apakah Anda yakin ingin <br>
-                                                    menghapus data penduduk <strong></strong>?</p>
+                                                    menghapus data Domisili <strong><?= $data->nama_lengkap; ?> (ID: <?= $data->id_pendatang; ?>)</strong>?</p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <a href="" class="btn btn-danger">Ya, Hapus</a>
+                                                    <a href="<?= base_url('pendatang/hapus_pendatang/' . $data->id_pendatang); ?>" class="btn btn-danger">Ya, Hapus</a> 
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <!-- end modal -->
+
+                                    <!-- Modal Detail Pendatang -->
+                                    <div class="modal fade" id="detail_pendatang-<?= $data->id_pendatang; ?>" tabindex="-1" aria-labelledby="modalLabel-" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                        <div class="modal-header bg-info">
+                                            <h5 class="modal-title " id="detailLabel">Detail Pendatang</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                                        </div>
+                                        
+                                       <div class="modal-body text-left">
+                                       <div class="p-3" style="display: grid; grid-template-columns: 200px 10px 1fr; row-gap: 10px; font-size: 16px;">
+                                            <div><strong>Nama Lengkap</strong></div><div>:</div><div><?= $data->nama_lengkap; ?></div>
+                                            <div><strong>Tempat Lahir</strong></div><div>:</div><div><?= $data->tempat_lahir; ?></div>
+                                            <div><strong>Tanggal Lahir</strong></div><div>:</div><div><?= date('d F Y', strtotime($data->tanggal_lahir)); ?></div>
+                                            <div><strong>Nomor WhatsApp</strong></div><div>:</div><div><?= $data->no_wa; ?></div>
+                                            <div><strong>Email</strong></div><div>:</div><div><?= $data->email; ?></div>
+                                            <div><strong>Jenis Kelamin</strong></div><div>:</div><div><?= $data->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan'; ?></div>
+                                            <div><strong>Alamat Asal</strong></div><div>:</div><div><?= $data->alamat_asal; ?></div>
+                                            <div><strong>Alamat Domisili</strong></div><div>:</div><div><?= $data->alamat_domisili; ?></div>
+                                            <div><strong>Alasan Pindah</strong></div><div>:</div><div><?= $data->alasan_pindah; ?></div>
+                                            <div><strong>Status Pengajuan</strong></div><div>:</div>
+                                            <div><span class="badge bg-info text-dark"><?= $data->status_pengajuan; ?></span></div>
+
+                                        </div>
+                                        </div>
+
+                                        
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                        </div>
+                                    </div>
                                     </div>
                                     <!-- end modal -->
                                     </td>
