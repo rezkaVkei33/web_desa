@@ -5,7 +5,7 @@
           <li class="dropdown"><a href="#"><span>Pengajuan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="<?= base_url('domisili'); ?>">Pengajuan Domisili</a></li> 
-              <li><a href="#">Pengajuan Akta Kelahiran</a></li>
+              <li><a href="<?= base_url('warga/kelahiran'); ?>">Pengajuan Akta Kelahiran</a></li>
               <li><a href="#">Pengajuan Akta Kematian</a></li>
               <li><a href="#">Pengajuan Bantuan Sosial</a></li>
             </ul>

@@ -11,3 +11,12 @@ $route['domisili/pendatang'] = 'domisili/pendatang';
 $route['domisili/konfirmasi_pendatang'] = 'domisili/konfirmasi_pendatang';
 $route['domisili/pindahan'] = 'domisili/pindahan';
 $route['domisili/(:any)'] = 'domisili/$1';
+
+
+// admin 
+$route['admin/kelahiran'] = 'admin/kelahiran';
+$route['admin/kelahiran/(:any)'] = 'admin/kelahiran/($1)';
+
+// warga 
+$route['warga/kelahiran'] = 'warga/kelahiran'; 
+$route['warga/kelahiran/(:any)'] = 'warga/kelahiran/($1)'; 

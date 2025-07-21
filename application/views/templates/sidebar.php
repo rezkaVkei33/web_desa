@@ -59,7 +59,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pengajuan</h6>
                         <a class="collapse-item" href="<?= base_url('pendatang'); ?>">Data Pedatang</a>
-                        <a class="collapse-item" href="#">Data Kelahiran</a>
+                        <a class="collapse-item" href="<?= base_url('admin/kelahiran'); ?>">Data Kelahiran</a>
                         <a class="collapse-item" href="#">Data Kematian</a>
                         <a class="collapse-item" href="#">Data Bansos</a>
                         <a class="collapse-item" href="#">Data Pindahan</a>
