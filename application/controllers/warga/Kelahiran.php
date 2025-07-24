@@ -9,7 +9,11 @@ class Kelahiran extends CI_Controller {
     }
 
     public function index() {
-        $data['kelahiran'] = $this->Kelahiran_model->get_all();
+        $data = array(
+            'title' => 'Data Kelahiran',
+            'subtitle' => 'Pengajuan Kelahiran',
+            'kelahiran' => $this->Kelahiran_model->get_all()
+        );
         $this->load->view('pengajuan/kelahiran/kelahiran', $data);
     }
 }

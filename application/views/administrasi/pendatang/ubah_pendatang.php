@@ -25,8 +25,6 @@
                     <h3 class="card-title text-center m-0">UBAH DATA PENDATANG</h3>
                 </div>
 
-                <?php $this->load->view('templates/setflash_data'); ?>
-
                 <!-- Card Body -->
                 <div class="card-body bg-white text-dark">
                     <form action="<?= base_url('pendatang/update_pendatang/' . $pendatang->id_pendatang); ?>" method="post" class="row g-4 bg-white p-5 shadow rounded-4" data-aos="fade-up" data-aos-delay="100">
@@ -102,8 +100,6 @@
 
             </div>
         <!-- End Konten -->
-
-    </div>
     <!-- /.container-fluid -->
 
     <?php $this->load->view('templates/footer'); ?>

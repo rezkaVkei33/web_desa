@@ -76,28 +76,23 @@
                     <div class="container">
                         <div class="card">
                         <div class="card-body">
-                            <a href="" class="btn btn-primary mb-3"> 
-                                <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a>
-                        
-                        <?php $this->load->view('templates/setflash_data'); ?>
-
                         <div class="table-responsive">
                             <table class="table table-striped">
-                            <thead>
+                            <thead class="text-center">
                                 <th>No</th>
                                 <th>Nomor Surat</th>
                                 <th>Keterangan</th>
                                 <th>Tanggal Terbit</th>
                                 <th>Aksi</th>
                             </thead>
-                            <tbody>
+                            <tbody class="text-center">
                             <?php if(!empty($surat_domisili)) : ?>
                             <?php $no = 1; foreach ($surat_domisili as $data): ?>
                                 <tr>
                                     <td><?= $no++; ?></td>
                                     <td><?= $data->nomor_surat; ?></td>
                                     <td><?= $data->keterangan; ?></td>
-                                    <td><?= date('d-m-Y H:i:s', strtotime($data->tanggal_terbit)); ?></td>
+                                    <td><?= date('d-M-Y', strtotime($data->tanggal_terbit)); ?></td>
                                     <td class="text-center">
                                         <a href="" class="btn btn-warning btn-sm">
                                             <i class="fas fa-edit"></i> Ubah
@@ -131,7 +126,7 @@
                                 <?php endforeach; ?>
                                 <?php else: ?>
                                      <tr>
-                                        <td colspan="6" class="text-center text-danger ">Tidak ada data Penduduk.</td>
+                                        <td colspan="5" class="text-center text-danger ">Tidak ada data Penduduk.</td>
                                     </tr>
                                <?php endif; ?>
                             </tbody>

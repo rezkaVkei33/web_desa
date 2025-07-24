@@ -34,8 +34,6 @@ function generate_nik() {
                     <h3 class="card-title text-center m-0">TAMBAH SURAT DOMISILI</h3>
                 </div>
 
-                <?php $this->load->view('templates/setflash_data'); ?>
-
                 <!-- Card Body -->
                 <div class="card-body bg-white text-dark">
                     <!-- Tombol Kembali di pojok kanan atas -->
@@ -68,19 +66,18 @@ function generate_nik() {
 
                          <hr>
                        <!-- Tombol Reset dan Simpan -->
-                        <div class="d-flex left-content-end">
-                            <button type="submit" class="btn btn-primary">
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary me-2">
                                 <i class="fa fa-paper-plane"></i>
                                 Kirim
-                            </button> | 
+                            </button>
                             <button type="reset" class="btn btn-secondary">
                                 <i class="fa fa-refresh" aria-hidden="true"></i>
-                                Reset</button>
+                                Reset
+                            </button>
                         </div>
                     </form>
                 </div>
-
-            </div>
         <!-- End Konten -->
 
     </div>

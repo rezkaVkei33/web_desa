@@ -45,142 +45,138 @@ function generate_nik() {
                         </a>
                     </div>
                     <form action="<?= base_url('penduduk/simpan_penduduk'); ?>" method="post">
-                        <!-- NIK -->
-                        <div class="mb-3">
-                            <label for="nik" class="form-label">NIK</label>
-                            <input type="text" name="nik" class="form-control" id="nik" value="<?= set_value('nik', generate_nik()); ?>" required>
-                        </div>
-
-                        <!-- NAMA -->
-                        <div class="mb-3">
-                            <label for="nama_lengkap" class="form-label">Nama</label>
-                            <input type="text" class="form-control" name="nama_lengkap" placeholder="Nama Lengkap." id="nama_lengkap" required>
-                        </div>
-                        <!-- TEMPAT LAHIR -->
-                        <div class="mb-3">
-                            <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
-                            <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat lahir." id="tempat_lahir" required>
-                        </div>
-                        
-                        <!-- TANGGAL LAHIR -->
-                        <div class="mb-3">
-                            <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                            <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
-                        </div>
-
-                        <!-- JENIS KELAMIN -->
-                        <div class="mb-3">
-                            <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                            <select class="form-control" name="jenis_kelamin" id="jenis_kelamin" required>
-                                <option value="" disabled selected>Pilih Jenis Kelamin</option>
-                                <option value="L">Laki-laki</option>
-                                <option value="P">Perempuan</option>
-                            </select>
-                        </div>
-                        <!-- ALAMAT -->
-                        <!-- Tombol untuk menampilkan form alamat -->
-                            <button type="button" class="btn btn-outline-info mb-3" onclick="toggleAlamatForm()">Masukkan Alamat</button>
-
-                            <!-- Form alamat dinamis (hidden by default) -->
-                            <div id="alamatForm" class="card-body bg-dark text-white"" style="display: none;">
-                                <div class="mb-3">
-                                    <label class="form-label">Jalan</label>
-                                    <input type="text" class="form-control" id="jalan" placeholder="Contoh: Jl. Merdeka No. 10">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- NIK -->
+                                <div class="form-group mb-3">
+                                    <label for="nik" class="form-label"><span class="text-danger">*</span> NIK</label>
+                                    <input type="text" name="nik" class="form-control" id="nik" value="<?= set_value('nik', generate_nik()); ?>" required>
                                 </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label">Desa</label>
-                                    <input type="text" class="form-control" id="desa" placeholder="Contoh: Desa Sukamaju">
+                                <!-- NAMA -->
+                                <div class="form-group mb-3">
+                                    <label for="nama_lengkap" class="form-label"><span class="text-danger">*</span> Nama</label>
+                                    <input type="text" class="form-control" name="nama_lengkap" placeholder="Nama Lengkap." id="nama_lengkap" required>
                                 </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label">Kabupaten</label>
-                                    <select class="form-control" id="kabupaten" onchange="updateKecamatan()">
-                                        <option value="">-- Pilih Kabupaten --</option>
-                                        <option value="Belitung">Kabupaten Belitung</option>
-                                        <option value="Belitung Timur">Kabupaten Belitung Timur</option>
+                                <!-- TEMPAT LAHIR -->
+                                <div class="form-group mb-3">
+                                    <label for="tempat_lahir" class="form-label"><span class="text-danger">*</span> Tempat Lahir</label>
+                                    <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat lahir." id="tempat_lahir" required>
+                                </div>
+                                <!-- TANGGAL LAHIR -->
+                                <div class="form-group mb-3">
+                                    <label for="tanggal_lahir" class="form-label"><span class="text-danger">*</span> Tanggal Lahir</label>
+                                    <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
+                                </div>
+                                <!-- JENIS KELAMIN -->
+                                <div class="form-group mb-3">
+                                    <label for="jenis_kelamin" class="form-label"><span class="text-danger">*</span> Jenis Kelamin</label>
+                                    <select class="form-control" name="jenis_kelamin" id="jenis_kelamin" required>
+                                        <option value="" disabled selected>Pilih Jenis Kelamin</option>
+                                        <option value="L">Laki-laki</option>
+                                        <option value="P">Perempuan</option>
                                     </select>
                                 </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label">Kecamatan</label>
-                                    <select class="form-control" id="kecamatan">
-                                        <option value="">-- Pilih Kecamatan --</option>
+                                <!-- AGAMA -->
+                                <div class="form-group mb-3">
+                                    <label for="agama" class="form-label"><span class="text-danger">*</span> Agama</label>
+                                    <select class="form-control" name="agama" id="agama" required>
+                                        <option value="" disabled selected>Pilih Agama</option>
+                                        <option value="Islam">Islam</option>
+                                        <option value="Kristen">Kristen</option>
+                                        <option value="Katolik">Katolik</option>
+                                        <option value="Hindu">Hindu</option>
+                                        <option value="Buddha">Buddha</option>
+                                        <option value="Konghucu">Konghucu</option>
+                                    </select>
+                                </div>
+                                <!-- STATUS PERKAWINAN -->
+                                <div class="form-group mb-3">
+                                    <label for="status_perkawinan" class="form-label"><span class="text-danger">*</span> Status Perkawinan</label>
+                                    <select class="form-control" name="status_perkawinan" id="status_perkawinan" required>
+                                        <option value="" disabled selected>Pilih Status Perkawinan</option>
+                                        <option value="Belum Menikah">Belum Menikah</option>
+                                        <option value="Menikah">Menikah</option>
+                                        <option value="Cerai Hidup">Cerai Hidup</option>
+                                        <option value="Cerai Mati">Cerai Mati</option>
                                     </select>
                                 </div>
                             </div>
-
-                            <!-- Hidden Textarea untuk alamat gabungan -->
-                            <textarea name="alamat" id="alamat" class="d-none"></textarea>
-
-                        <!-- AGAMA -->
-                        <div class="mb-3">
-                            <label for="agama" class="form-label">Agama</label>
-                            <select class="form-control" name="agama" id="agama" required>
-                                <option value="" disabled selected>Pilih Agama</option>
-                                <option value="Islam">Islam</option>
-                                <option value="Kristen">Kristen</option>
-                                <option value="Katolik">Katolik</option>
-                                <option value="Hindu">Hindu</option>
-                                <option value="Buddha">Buddha</option>
-                                <option value="Konghucu">Konghucu</option>
-                            </select>
+                            <div class="col-md-6">
+                                <!-- PENDIDIKAN -->
+                                <div class="form-group mb-3">
+                                    <label for="pendidikan" class="form-label"><span class="text-danger">*</span> Pendidikan</label>
+                                    <select class="form-control" name="pendidikan" id="pendidikan" required>
+                                        <option value="" disabled selected>Pilih Pendidikan</option>
+                                        <option value="Tidak Sekolah">Tidak Sekolah</option>
+                                        <option value="SD">SD</option>
+                                        <option value="SMP">SMP</option>
+                                        <option value="SMA/SMK">SMA/SMK</option>
+                                        <option value="Diploma">Diploma</option>
+                                        <option value="Sarjana">Sarjana</option>
+                                        <option value="Pasca Sarjana">Pasca Sarjana</option>
+                                    </select>
+                                </div>
+                                <!-- PEKERJAAN -->
+                                <div class="form-group mb-3">
+                                    <label for="pekerjaan" class="form-label"><span class="text-danger">*</span> Pekerjaan</label>
+                                    <input type="text" class="form-control" name="pekerjaan" placeholder="Pekerjaan." id="pekerjaan" required>
+                                </div>
+                                <!-- KEWARGANEGARAAN -->
+                                <div class="form-group mb-3">
+                                    <label for="kewarganegaraan" class="form-label"><span class="text-danger">*</span>Kewarganegaraan</label>
+                                    <select class="form-control" name="kewarganegaraan" id="kewarganegaraan" required>
+                                        <option value="" disabled selected>Pilih Kewarganegaraan</option>
+                                        <option value="WNI">WNI</option>
+                                        <option value="WNA">WNA</option>
+                                    </select>
+                                </div>
+                                <!-- NO KK -->
+                                <div class="form-group mb-3">
+                                    <label for="no_kk" class="form-label">Nomor Kartu Keluarga (KK)</label>
+                                    <input type="text" class="form-control" name="no_kk" placeholder="Nomor KK." id="no_kk" required>
+                                </div>
+                                <!-- ALAMAT -->
+                                <button type="button" class="btn btn-outline-info mb-3" onclick="toggleAlamatForm()">Masukkan Alamat</button>
+                                <!-- Form alamat dinamis (hidden by default) -->
+                                <div id="alamatForm" class="card-body bg-dark text-white" style="display: none;">
+                                    <div class="mb-3">
+                                        <label class="form-label">Jalan</label>
+                                        <input type="text" class="form-control" id="jalan" placeholder="Contoh: Jl. Merdeka No. 10">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Desa</label>
+                                        <input type="text" class="form-control" id="desa" placeholder="Contoh: Desa Sukamaju">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Kabupaten</label>
+                                        <select class="form-control" id="kabupaten" onchange="updateKecamatan()">
+                                            <option value="">-- Pilih Kabupaten --</option>
+                                            <option value="Belitung">Kabupaten Belitung</option>
+                                            <option value="Belitung Timur">Kabupaten Belitung Timur</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Kecamatan</label>
+                                        <select class="form-control" id="kecamatan">
+                                            <option value="">-- Pilih Kecamatan --</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Hidden Textarea untuk alamat gabungan -->
+                                <textarea name="alamat" id="alamat" class="d-none"></textarea>
+                            </div>
                         </div>
-                        <!-- STATUS PERKAWINAN -->
-                        <div class="mb-3">
-                            <label for="status_perkawinan" class="form-label">Status Perkawinan</label>
-                            <select class="form-control" name="status_perkawinan" id="status_perkawinan" required>
-                                <option value="" disabled selected>Pilih Status Perkawinan</option>
-                                <option value="Belum Menikah">Belum Menikah</option>
-                                <option value="Menikah">Menikah</option>
-                                <option value="Cerai Hidup">Cerai Hidup</option>
-                                <option value="Cerai Mati">Cerai Mati</option>
-                            </select>
-                        </div>
-                        <!-- PENDIDIKAN -->
-                        <div class="mb-3">
-                            <label for="pendidikan" class="form-label">Pendidikan</label>
-                            <select class="form-control" name="pendidikan" id="pendidikan" required>
-                                <option value="" disabled selected>Pilih Pendidikan</option>
-                                <option value="Tidak Sekolah">Tidak Sekolah</option>
-                                <option value="SD">SD</option>
-                                <option value="SMP">SMP</option>
-                                <option value="SMA/SMK">SMA/SMK</option>
-                                <option value="Diploma">Diploma</option>
-                                <option value="Sarjana">Sarjana</option>
-                                <option value="Pasca Sarjana">Pasca Sarjana</option>
-                            </select>
-                        </div>
-                        <!-- PEKERJAAN -->
-                        <div class="mb-3">
-                            <label for="pekerjaan" class="form-label">Pekerjaan</label>
-                            <input type="text" class="form-control" name="pekerjaan" placeholder="Pekerjaan." id="pekerjaan" required>
-                        </div>
-                        <!-- KEWARGANEGARAAN -->
-                        <div class="mb-3">
-                            <label for="kewarganegaraan" class="form-label">Kewarganegaraan</label>
-                            <select class="form-control" name="kewarganegaraan" id="kewarganegaraan" required>
-                                <option value="" disabled selected>Pilih Kewarganegaraan</option>
-                                <option value="WNI">WNI</option>
-                                <option value="WNA">WNA</option>
-                            </select>
-                        </div>
-                        <!-- NO KK -->
-                        <div class="mb-3">
-                            <label for="no_kk" class="form-label">Nomor Kartu Keluarga (KK)</label>
-                            <input type="text" class="form-control" name="no_kk" placeholder="Nomor KK." id="no_kk" required>
-                        </div>
-
-                         <hr>
-                       <!-- Tombol Reset dan Simpan -->
-                        <div class="d-flex left-content-end">
+                        <hr>
+                        <!-- Tombol Reset dan Simpan -->
+                        <div class="form-group mt-4">
                             <button type="submit" class="btn btn-primary">
                                 <i class="fa fa-save"></i>
                                 Simpan
-                            </button> | 
+                            </button>
                             <button type="reset" class="btn btn-secondary">
                                 <i class="fa fa-refresh" aria-hidden="true"></i>
-                                Reset</button>
+                                Reset
+                            </button>
                         </div>
                     </form>
                 </div>

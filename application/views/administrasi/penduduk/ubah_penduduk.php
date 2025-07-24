@@ -35,60 +35,46 @@ function generate_nik() {
                     <h3 class="card-title text-center m-0">UBAH DATA PENDUDUK</h3>
                 </div>
                         <!-- pesan success -->
-                                <div class="container">
-                            <?php if ($this->session->flashdata('success')): ?>
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <?= $this->session->flashdata('success'); ?>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            <?php endif; ?>
-                            <?php if ($this->session->flashdata('error')): ?>
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    <?= $this->session->flashdata('error'); ?>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            <?php endif; ?>              
+                        <?php $this->load->view('templates/set_flashdata'); ?>
 
                 <!-- Card Body -->
                 <div class="card-body bg-white text-dark">
                     <!-- Tombol Kembali di pojok kanan atas -->
                     <div class="d-flex justify-content-end mb-3">
-                        <a href="<?= base_url('penduduk'); ?>" class="btn btn-info">
-                            &larr; Kembali
+                        <a href="<?= base_url('penduduk'); ?>" class="btn btn-info text-white">
+                            <i class="fa fa-backspace"></i> Kembali
                         </a>
                         
                     </div>
                     <form action="<?= base_url('penduduk/update/' . $penduduk->penduduk_id); ?>" method="post"> 
-                        <!-- NIK -->
+                    <div class="row">
+                        <div class="col-md-6">
+                                 <!-- NIK -->
                         <div class="mb-3">  
-                            <label for="nik" class="form-label">NIK</label>
+                            <label for="nik" class="form-label"><span class="text-danger">*</span> NIK</label>
                             <input type="text" value="<?= $penduduk->nik; ?>" name="nik" class="form-control" id="nik" value="<?= set_value('nik', generate_nik()); ?>" required>
                         </div>
 
                         <!-- NAMA -->
                         <div class="mb-3">
-                            <label for="nama_lengkap" class="form-label">Nama</label>
+                            <label for="nama_lengkap" class="form-label"> <span class="text-danger">*</span> Nama</label>
                             <input type="text" value="<?= $penduduk->nama_lengkap; ?>" class="form-control" name="nama_lengkap" placeholder="Nama Lengkap." id="nama_lengkap" required>
                         </div>
                         <!-- TEMPAT LAHIR -->
                         <div class="mb-3">
-                            <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
+                            <label for="tempat_lahir" class="form-label"><span class="text-danger">*</span> Tempat Lahir</label>
                             <input type="text" value="<?= $penduduk->tempat_lahir; ?>" class="form-control" name="tempat_lahir" placeholder="Tempat lahir." id="tempat_lahir" required>
                         </div>
                         
                         <!-- TANGGAL LAHIR -->
                         <div class="mb-3">
-                            <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                            <label for="tanggal_lahir" class="form-label"><span class="text-danger">*</span> Tanggal Lahir</label>
                             <input type="date" value="<?= $penduduk->tanggal_lahir; ?>" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
                         </div>
 
                         <!-- JENIS KELAMIN -->
                         <div class="mb-3">
-                            <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                            <label for="jenis_kelamin" class="form-label"><span class="text-danger">*</span> Jenis Kelamin</label>
                             <select class="form-control" name="jenis_kelamin" id="jenis_kelamin" required>
                                 <option value="" disabled selected>Pilih Jenis Kelamin</option>
                                 <option value="L" <?= ($penduduk->jenis_kelamin == 'L') ? 'selected' : '' ?>>Laki-Laki</option>
@@ -96,8 +82,67 @@ function generate_nik() {
                             </select>
                         </div>
 
-                        <!-- ALAMAT -->
+                        <!-- AGAMA -->
+                        <div class="mb-3">
+                            <label for="agama" class="form-label"><span class="text-danger">*</span> Agama</label>
+                            <select class="form-control" name="agama" id="agama" required>
+                                <option value="" disabled selected>Pilih Agama</option>
+                                <option value="Islam"<?= ($penduduk->agama == 'Islam') ? 'selected' : '' ?>>Islam</option>
+                                <option value="Kristen"<?= ($penduduk->agama == 'Kristen') ? 'selected' : '' ?>>Kristen</option>
+                                <option value="Katolik"<?= ($penduduk->agama == 'Katolik') ? 'selected' : '' ?>>Katolik</option>
+                                <option value="Hindu"<?= ($penduduk->agama == 'Hindu') ? 'selected' : '' ?>>Hindu</option>
+                                <option value="Buddha"<?= ($penduduk->agama == 'Buddha') ? 'selected' : '' ?>>Buddha</option>
+                                <option value="Konghucu"<?= ($penduduk->agama == 'Konghucu') ? 'selected' : '' ?>>Konghucu</option>
+                            </select>
+                        </div>
+                        <!-- STATUS PERKAWINAN -->
+                        <div class="mb-3">
+                            <label for="status_perkawinan" class="form-label"><span class="text-danger">*</span> Status Perkawinan</label>
+                            <select class="form-control" name="status_perkawinan" id="status_perkawinan" required>
+                                <option value="" disabled selected>Pilih Status Perkawinan</option>
+                                <option value="Belum Menikah"<?= ($penduduk->status_perkawinan == 'Belum Menikah') ? 'selected' : '' ?>>Belum Menikah</option>
+                                <option value="Menikah"<?= ($penduduk->status_perkawinan == 'Menikah') ? 'selected' : '' ?>>Menikah</option>
+                                <option value="Cerai Hidup"<?= ($penduduk->status_perkawinan == 'Cerai Hidup') ? 'selected' : '' ?>>Cerai Hidup</option>
+                                <option value="Cerai Mati"<?= ($penduduk->status_perkawinan == 'Cerai Mati') ? 'selected' : '' ?>>Cerai Mati</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
 
+                        <!-- PENDIDIKAN -->
+                        <div class="mb-3">
+                            <label for="pendidikan" class="form-label"><span class="text-danger">*</span> Pendidikan</label>
+                            <select class="form-control" name="pendidikan" id="pendidikan" required>
+                                <option value="" disabled selected>Pilih Pendidikan</option>
+                                <option value="Tidak Sekolah" >Tidak Sekolah</option>
+                                <option value="SD"<?= ($penduduk->pendidikan == 'SD') ? 'selected' : '' ?>>SD</option>
+                                <option value="SMP"<?= ($penduduk->pendidikan == 'SMP') ? 'selected' : '' ?>>SMP</option>
+                                <option value="SMA/SMK"<?= ($penduduk->pendidikan == 'SMA/SMK') ? 'selected' : '' ?>>SMA/SMK</option>
+                                <option value="Diploma"<?= ($penduduk->pendidikan == 'Diploma') ? 'selected' : '' ?>>Diploma</option>
+                                <option value="Sarjana"<?= ($penduduk->pendidikan == 'Sarjana') ? 'selected' : '' ?>>Sarjana</option>
+                                <option value="Pasca Sarjana"<?= ($penduduk->pendidikan == 'Pasca Sarjana') ? 'selected' : '' ?>>Pasca Sarjana</option>
+                            </select>
+                        </div>
+                        <!-- PEKERJAAN -->
+                        <div class="mb-3">
+                            <label for="pekerjaan" class="form-label"><span class="text-danger">*</span> Pekerjaan</label>
+                            <input type="text" value="<?= $penduduk->pekerjaan; ?>" class="form-control" name="pekerjaan" placeholder="Pekerjaan." id="pekerjaan" required>
+                        </div>
+                        <!-- KEWARGANEGARAAN -->
+                        <div class="mb-3">
+                            <label for="kewarganegaraan" class="form-label"><span class="text-danger">*</span> Kewarganegaraan</label>
+                            <select class="form-control" name="kewarganegaraan" id="kewarganegaraan" required>
+                                <option value="" disabled selected>Pilih Kewarganegaraan</option>
+                                <option value="WNI"<?= ($penduduk->kewarganegaraan == 'WNI') ? 'selected' : '' ?>>WNI</option>
+                                <option value="WNA"<?= ($penduduk->kewarganegaraan == 'WNA') ? 'selected' : '' ?>>WNA</option>
+                            </select>
+                        </div>
+                        <!-- NO KK -->
+                        <div class="mb-3">
+                            <label for="no_kk" class="form-label">Nomor Kartu Keluarga (KK)</label>
+                            <input type="text" class="form-control" value="<?= $penduduk->no_kk; ?>" name="no_kk" placeholder="Nomor KK." id="no_kk" required>
+                        </div>
+                        <!-- ALAMAT -->
                             <!-- Button Toggle -->
                             <button type="button" class="btn btn-outline-info mb-3" id="toggleAlamatBtn">
                                 <?= empty($penduduk->alamat) ? 'Tambah Alamat' : 'Edit Alamat' ?>
@@ -148,75 +193,18 @@ function generate_nik() {
                             <!-- Hidden Field untuk menyimpan alamat gabungan -->
                             <textarea name="alamat" id="alamat" class="d-none"><?= !empty($penduduk->alamat) ? htmlspecialchars($penduduk->alamat) : '' ?></textarea>
                             <div id="alamatForm" style="display: none;"></div>
-
-                        <!-- AGAMA -->
-                        <div class="mb-3">
-                            <label for="agama" class="form-label">Agama</label>
-                            <select class="form-control" name="agama" id="agama" required>
-                                <option value="" disabled selected>Pilih Agama</option>
-                                <option value="Islam"<?= ($penduduk->agama == 'Islam') ? 'selected' : '' ?>>Islam</option>
-                                <option value="Kristen"<?= ($penduduk->agama == 'Kristen') ? 'selected' : '' ?>>Kristen</option>
-                                <option value="Katolik"<?= ($penduduk->agama == 'Katolik') ? 'selected' : '' ?>>Katolik</option>
-                                <option value="Hindu"<?= ($penduduk->agama == 'Hindu') ? 'selected' : '' ?>>Hindu</option>
-                                <option value="Buddha"<?= ($penduduk->agama == 'Buddha') ? 'selected' : '' ?>>Buddha</option>
-                                <option value="Konghucu"<?= ($penduduk->agama == 'Konghucu') ? 'selected' : '' ?>>Konghucu</option>
-                            </select>
                         </div>
-                        <!-- STATUS PERKAWINAN -->
-                        <div class="mb-3">
-                            <label for="status_perkawinan" class="form-label">Status Perkawinan</label>
-                            <select class="form-control" name="status_perkawinan" id="status_perkawinan" required>
-                                <option value="" disabled selected>Pilih Status Perkawinan</option>
-                                <option value="Belum Menikah"<?= ($penduduk->status_perkawinan == 'Belum Menikah') ? 'selected' : '' ?>>Belum Menikah</option>
-                                <option value="Menikah"<?= ($penduduk->status_perkawinan == 'Menikah') ? 'selected' : '' ?>>Menikah</option>
-                                <option value="Cerai Hidup"<?= ($penduduk->status_perkawinan == 'Cerai Hidup') ? 'selected' : '' ?>>Cerai Hidup</option>
-                                <option value="Cerai Mati"<?= ($penduduk->status_perkawinan == 'Cerai Mati') ? 'selected' : '' ?>>Cerai Mati</option>
-                            </select>
-                        </div>
-                        <!-- PENDIDIKAN -->
-                        <div class="mb-3">
-                            <label for="pendidikan" class="form-label">Pendidikan</label>
-                            <select class="form-control" name="pendidikan" id="pendidikan" required>
-                                <option value="" disabled selected>Pilih Pendidikan</option>
-                                <option value="Tidak Sekolah" >Tidak Sekolah</option>
-                                <option value="SD"<?= ($penduduk->pendidikan == 'SD') ? 'selected' : '' ?>>SD</option>
-                                <option value="SMP"<?= ($penduduk->pendidikan == 'SMP') ? 'selected' : '' ?>>SMP</option>
-                                <option value="SMA/SMK"<?= ($penduduk->pendidikan == 'SMA/SMK') ? 'selected' : '' ?>>SMA/SMK</option>
-                                <option value="Diploma"<?= ($penduduk->pendidikan == 'Diploma') ? 'selected' : '' ?>>Diploma</option>
-                                <option value="Sarjana"<?= ($penduduk->pendidikan == 'Sarjana') ? 'selected' : '' ?>>Sarjana</option>
-                                <option value="Pasca Sarjana"<?= ($penduduk->pendidikan == 'Pasca Sarjana') ? 'selected' : '' ?>>Pasca Sarjana</option>
-                            </select>
-                        </div>
-                        <!-- PEKERJAAN -->
-                        <div class="mb-3">
-                            <label for="pekerjaan" class="form-label">Pekerjaan</label>
-                            <input type="text" value="<?= $penduduk->pekerjaan; ?>" class="form-control" name="pekerjaan" placeholder="Pekerjaan." id="pekerjaan" required>
-                        </div>
-                        <!-- KEWARGANEGARAAN -->
-                        <div class="mb-3">
-                            <label for="kewarganegaraan" class="form-label">Kewarganegaraan</label>
-                            <select class="form-control" name="kewarganegaraan" id="kewarganegaraan" required>
-                                <option value="" disabled selected>Pilih Kewarganegaraan</option>
-                                <option value="WNI"<?= ($penduduk->kewarganegaraan == 'WNI') ? 'selected' : '' ?>>WNI</option>
-                                <option value="WNA"<?= ($penduduk->kewarganegaraan == 'WNA') ? 'selected' : '' ?>>WNA</option>
-                            </select>
-                        </div>
-                        <!-- NO KK -->
-                        <div class="mb-3">
-                            <label for="no_kk" class="form-label">Nomor Kartu Keluarga (KK)</label>
-                            <input type="text" class="form-control" value="<?= $penduduk->no_kk; ?>" name="no_kk" placeholder="Nomor KK." id="no_kk" required>
-                        </div>
-
+                    </div>    
+                   
                          <hr>
                        <!-- Tombol Reset dan Simpan -->
-                        <div class="d-flex left-content-end">
+                        <div class="d-flex left-content-end ">
                             <button type="submit" class="btn btn-primary">
                                 <i class="fa fa-save"></i>
                                 Simpan
                             </button> | 
-                            <a href="<?= base_url('penduduk'); ?>" class="btn btn-info">
-                            
-                            <i class="fa fa-arrow-left"></i>
+                            <a href="<?= base_url('penduduk'); ?>" class="btn btn-info text-white">
+                            <i class="fa fa-backspace"></i>
                             Kembali
                          </a>
                         </div>

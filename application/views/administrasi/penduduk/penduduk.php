@@ -78,8 +78,6 @@
                         <div class="card-body">
                             <a href="<?= base_url('penduduk/tambah_penduduk'); ?>" class="btn btn-primary mb-3"> 
                                 <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a>
-                        
-                        <?php $this->load->view('templates/setflash_data'); ?>
 
                         <div class="table-responsive">
                             <table class="table table-striped">

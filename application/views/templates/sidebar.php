@@ -1,5 +1,5 @@
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -64,6 +64,25 @@
                         <a class="collapse-item" href="#">Data Bansos</a>
                         <a class="collapse-item" href="#">Data Pindahan</a>
                         <a class="collapse-item" href="<?= base_url('Domisili/surat_domisili'); ?>">Layanan & surat</a>
+                    </div>
+                </div>
+            </li>
+            <div class="sidebar-heading">
+                Layanan & Surat
+            </div>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#layanan"
+                    aria-expanded="true" aria-controls="layanan">
+                    <i class="fas fa-fw fa-envelope"></i>
+                    <span>Layanan & Surat</span>
+                </a>
+                <div id="layanan" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Layanan & Surat</h6>
+                        <a class="collapse-item" href="<?= base_url('Domisili/surat_domisili'); ?>">Surat Domisili</a>
                     </div>
                 </div>
             </li>

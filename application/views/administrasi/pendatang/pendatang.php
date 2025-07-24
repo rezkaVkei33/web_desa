@@ -75,8 +75,7 @@
                     <!-- konten -->
                     <div class="container">
                         <div class="card">
-                        <div class="card-body">                       
-                        <?php $this->load->view('templates/setflash_data'); ?>
+                        <div class="card-body">                     
 
                         <div class="table-responsive">
                             <table class="table table-striped">

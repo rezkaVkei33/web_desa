@@ -4,7 +4,7 @@
 <head>
     <?php $this->load->view('templates/header'); ?>
 
-    <title>Domisili Pendatang - Admin</title>
+    <title>Data Kelahiran - Admin</title>
     <style>
         /* Animasi dan micro-interactions */
         #deleteModal .modal-content {
@@ -76,32 +76,28 @@
                     <div class="container">
                         <div class="card">
                         <div class="card-body">                       
-                        <?php $this->load->view('templates/setflash_data'); ?>
-
-                        <div class="table-responsive">
+                         <div class="table-responsive">
                             <table class="table table-striped">
                             <thead class="text-center">
                                 <th>No</th>
-                                <th >Nama Lengkap</th>
+                                <th>Nama Bayi</th>
                                 <th>Jenis Kelamin</th>
-                                <th>Alamat Asal</th>
-                                <th>Alamat Domisili</th>
+                                <th>Tanggal Lahir</th>
                                 <th>Status</th>
                                 <th>Tanggal Update</th>
-                                <th >Aksi</th>
+                                <th>Aksi</th>
                             </thead>
                             <tbody>
-                            <?php if(!empty($pendatang)) : ?>
-                            <?php $no = 1; foreach ($pendatang as $data): ?>
+                            <?php if(!empty($kelahiran)) : ?>
+                            <?php $no = 1; foreach ($kelahiran as $data): ?>
                                 <tr>
                                     <td><?= $no++; ?></td>
-                                    <td><?= $data->nama_lengkap; ?></td>
+                                    <td><?= $data->nama_bayi; ?></td>
                                     <td class="text-center"><?= $data->jenis_kelamin; ?></td>
-                                    <td><?= $data->alamat_asal; ?></td>
-                                    <td><?= $data->alamat_domisili; ?></td>
-                                    <td>
-                                         <span class="badge bg-info text-dark"><?= $data->status_pengajuan; ?></span>
-                                    </td>
+                                    <td><?= $data->tanggal_lahir; ?></td>
+                                    <!-- <td>
+                                         <span class="badge bg-info text-dark"></span>
+                                    </td> -->
                                     <td><?= date('d-m-Y H:i:s', strtotime($data->update_tanggal)); ?></td>
                                     <td class="text-center">
                                         <a href="<?= base_url('pendatang/ubah_pendatang/' . $data->id_pendatang); ?>" class="btn btn-warning btn-sm">
@@ -149,15 +145,12 @@
                                         
                                        <div class="modal-body text-left">
                                        <div class="p-3" style="display: grid; grid-template-columns: 200px 10px 1fr; row-gap: 10px; font-size: 16px;">
-                                            <div><strong>Nama Lengkap</strong></div><div>:</div><div><?= $data->nama_lengkap; ?></div>
+                                            <div><strong>Nama Bayi</strong></div><div>:</div><div><?= $data->nama_lengkap; ?></div>
                                             <div><strong>Tempat Lahir</strong></div><div>:</div><div><?= $data->tempat_lahir; ?></div>
                                             <div><strong>Tanggal Lahir</strong></div><div>:</div><div><?= date('d F Y', strtotime($data->tanggal_lahir)); ?></div>
-                                            <div><strong>Nomor WhatsApp</strong></div><div>:</div><div><?= $data->no_wa; ?></div>
+                                            <div><strong>No. WA</strong></div><div>:</div><div><?= $data->no_wa; ?></div>
                                             <div><strong>Email</strong></div><div>:</div><div><?= $data->email; ?></div>
                                             <div><strong>Jenis Kelamin</strong></div><div>:</div><div><?= $data->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan'; ?></div>
-                                            <div><strong>Alamat Asal</strong></div><div>:</div><div><?= $data->alamat_asal; ?></div>
-                                            <div><strong>Alamat Domisili</strong></div><div>:</div><div><?= $data->alamat_domisili; ?></div>
-                                            <div><strong>Alasan Pindah</strong></div><div>:</div><div><?= $data->alasan_pindah; ?></div>
                                             <div><strong>Status Pengajuan</strong></div><div>:</div>
                                             <div><span class="badge bg-info text-dark"><?= $data->status_pengajuan; ?></span></div>
 
@@ -177,7 +170,7 @@
                                 <?php endforeach; ?>
                                 <?php else: ?>
                                      <tr>
-                                        <td colspan="6" class="text-center text-danger ">Tidak ada Domisili/Pendatang.</td>
+                                        <td colspan="7" class="text-center text-danger ">Tidak ada data kelahiran.</td>
                                     </tr>
                                <?php endif; ?>
                             </tbody>
