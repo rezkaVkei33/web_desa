@@ -19,4 +19,5 @@ $route['admin/kelahiran/(:any)'] = 'admin/kelahiran/($1)';
 
 // warga 
 $route['warga/kelahiran'] = 'warga/kelahiran'; 
+$route['warga/kelahiran/simpan_akta'] = 'warga/kelahiran/simpan_akta'; 
 $route['warga/kelahiran/(:any)'] = 'warga/kelahiran/($1)'; 

@@ -3,34 +3,21 @@
 
   <head>
       <?php $this->load->view('head'); ?>
-      <title>Layanan Desa Ibul</title>
-    
+      <title><?= $title; ?> - Desa Ibul</title>
+
   </head>
 
   <body class="index-page">
 
-    <header id="header" class="header d-flex align-items-center fixed-top">
-      <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
-        
-        <a href="<?= base_url(''); ?>" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <img src="<?= base_url('assets/img/Logo_Belitung.png'); ?>" alt=""> 
-          <h1 class="sitename">DESA IBUL</h1>
-        </a>
-      <?php $this->load->view('navbar'); ?>
-
-      </div>
-    </header>
+    <?php $this->load->view('header'); ?>
 
      <section id="domisili" class="section bg-light">
   <div class="container py-5" data-aos="fade-up">
 
     <div class="section-title text-center mb-5 py-4 px-3 rounded-4 shadow-sm" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
-        <h2 class="fw-bold text-primary-emphasis"> Formulir Pendatang Domisili</h2>
-        <p class="text-dark mt-2">Silakan isi formulir berikut dengan lengkap dan benar <span class="text-danger-emphasis"></span></p>
+        <h2 class="fw-bold text-primary-emphasis"><?= $subtitle; ?></h2>
+        <p class="text-dark mt-2"><?= $isi; ?> <span class="text-danger-emphasis"></span></p>
     </div>
-
-    <?php $this->load->view('templates/setflash_data'); ?>
     
     <form action="<?= base_url('domisili/simpan_pendatang'); ?>" method="post" class="row g-4 bg-white p-5 shadow rounded-4" data-aos="fade-up" data-aos-delay="100">
       

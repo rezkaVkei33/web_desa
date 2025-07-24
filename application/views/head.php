@@ -19,11 +19,13 @@
 
   <!-- Main CSS File -->
   <link href="<?= base_url('assets/css/main.css'); ?>" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Siimple
-  * Template URL: https://bootstrapmade.com/free-bootstrap-landing-page/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <style>
+      @keyframes fadeOut {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+    </style>

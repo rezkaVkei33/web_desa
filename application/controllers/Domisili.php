@@ -17,7 +17,12 @@ class Domisili extends CI_Controller {
         $this->load->view('administrasi/surat_domisili/surat_domisili', $data);
     }
     public function pendatang() {
-        $this->load->view('pengajuan/domisili/pendatang');
+        $data = array(
+            'title' => 'Domisili Pendatang',
+            'subtitle' => 'Formulir Pendatang Domisili',
+            'isi' => 'Silakan isi formulir berikut dengan lengkap dan benar'
+        );
+        $this->load->view('pengajuan/domisili/pendatang', $data);
     }
     public function simpan_pendatang(){
         

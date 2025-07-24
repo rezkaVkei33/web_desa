@@ -3,41 +3,29 @@
 
   <head>
       <?php $this->load->view('head'); ?>
-      <title>Layanan Desa Ibul</title>
-    
+      <title><?= $title; ?> - Desa Ibul</title>
+
   </head>
 
   <body class="index-page">
 
-    <header id="header" class="header d-flex align-items-center fixed-top">
-      <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
-        
-        <a href="<?= base_url(''); ?>" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <img src="<?= base_url('assets/img/Logo_Belitung.png'); ?>" alt=""> 
-          <h1 class="sitename">DESA IBUL</h1>
-        </a>
-      <?php $this->load->view('navbar'); ?>
-
-      </div>
-    </header>
+    <?php $this->load->view('header'); ?>
 
      <section id="domisili" class="section bg-light">
   <div class="container py-5" data-aos="fade-up">
 
     <div class="section-title text-center mb-5 py-4 px-3 rounded-4 shadow-sm" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
-        <h2 class="fw-bold text-primary-emphasis"> Formulir Pendatang Domisili</h2>
-        <p class="text-dark mt-2">Silakan isi formulir berikut dengan lengkap dan benar <span class="text-danger-emphasis"></span></p>
+        <h2 class="fw-bold text-primary-emphasis"><?= $subtitle; ?></h2>
+        <p class="text-dark mt-2"><?= $isi; ?> <span class="text-danger-emphasis"></span></p>
     </div>
 
-    <?php $this->load->view('templates/setflash_data'); ?>
     
-    <form action="<?= base_url('domisili/simpan_pendatang'); ?>" method="post" class="row g-4 bg-white p-5 shadow rounded-4" data-aos="fade-up" data-aos-delay="100">
+    <form action="<?= base_url('warga/kelahiran/simpan_akta'); ?>" method="post" class="row g-4 bg-white p-5 shadow rounded-4" data-aos="fade-up" data-aos-delay="100">
       
-      <!-- Nama Lengkap -->
+      <!-- Nama Bayi -->
       <div class="col-md-6">
-        <label class="form-label">Nama Lengkap</label>
-        <input type="text" class="form-control" name="nama_lengkap" placeholder="Contoh: Siti Nurjanah" required>
+        <label class="form-label">Nama Bayi</label>
+        <input type="text" class="form-control" name="nama_bayi" placeholder="Contoh: Aisah Aprilia" required>
       </div>
 
       <!-- Tempat Lahir -->
@@ -74,24 +62,26 @@
         </select>
       </div>
 
-      <!-- Alamat Asal -->
-      <div class="col-md-12">
-        <label class="form-label">Desa Asal</label>
-        <textarea class="form-control" name="alamat_asal" rows="2" placeholder="Desa sebelum pindah, Cth: Lenggang..." required></textarea>
+      <!-- Nama Ayah -->
+      <div class="col-md-6">
+        <label class="form-label">Nama Ayah</label>
+        <select name="nama_ayah" id="nama_ayah" class="form-select" required>
+          <option value="" disabled selected hidden>Pilih Nama Ayah</option>
+          <?php foreach ($penduduk as $p): ?>
+            <option value="<?= $p->penduduk_id; ?>"><?= $p->nama_lengkap; ?></option>
+          <?php endforeach; ?>
+        </select>
       </div>
-
-      <!-- Alamat Domisili -->
-      <div class="col-md-12">
-        <label class="form-label">Alamat Domisili Sekarang</label>
-        <textarea class="form-control" name="alamat_domisili" rows="2" placeholder="Alamat tinggal saat ini..." required></textarea>
+      <!-- Nama Ibu -->
+      <div class="col-md-6">
+        <label class="form-label">Nama Ibu</label>
+        <select name="nama_ibu" id="nama_ibu" class="form-select" required>
+          <option value="" disabled selected hidden>Pilih Nama Ibu</option>
+          <?php foreach ($penduduk as $p): ?>
+            <option value="<?= $p->penduduk_id; ?>"><?= $p->nama_lengkap; ?></option>
+          <?php endforeach; ?>
+        </select>
       </div>
-
-      <!-- Alasan Pindah -->
-      <div class="col-md-12">
-        <label class="form-label">Alasan Pindah</label>
-        <textarea class="form-control" name="alasan_pindah" rows="3" placeholder="Ceritakan secara singkat alasan pindah..." required></textarea>
-      </div>
-
       <!-- Tombol -->
       <div class="col-md-12 text-center mt-4">
         <button type="submit" class="btn btn-primary px-5 py-2 rounded-pill shadow-sm">
