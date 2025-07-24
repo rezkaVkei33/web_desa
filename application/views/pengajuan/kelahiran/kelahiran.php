@@ -17,7 +17,7 @@
           <img src="<?= base_url('assets/img/Logo_Belitung.png'); ?>" alt=""> 
           <h1 class="sitename">DESA IBUL</h1>
         </a>
-  <?php $this->load->view('navbar'); ?>
+      <?php $this->load->view('navbar'); ?>
 
       </div>
     </header>
